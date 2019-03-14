@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Configuration;
 using System.Data;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.ServiceProcess;
 using System.Text;
@@ -35,17 +36,20 @@ namespace ReportingService
                 _logger.Info($"[ReportGeneratorService] From config file was readed path = '{_path}' interval='{_interval}'");
                 _reportGenerator = new ReportGenerator(_path, _logger);
                 _timer = new Timer(WorkProcedure);
+                WorkProcedure(5);
                 InitializeComponent();
             }
             else
             {
-                _logger.Error("[ReportGeneratorService] Can not read config file");
+                _logger.Error("[ReportGeneratorService] Can't read config file");
+                throw new ConfigurationErrorsException();
             }
         }
 
         protected override void OnStart(string[] args)
         {
-           _timer.Change(0, _interval * 1000);
+            var startTime = 0;
+           _timer.Change(startTime, _interval * 60000);
         }
 
         private void WorkProcedure(object target)
