@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ReportingService
 {
-    public class PeriodSummary
+    public class PowerPeriodSummary
     {
         public string LocalTime { get; set; }
 

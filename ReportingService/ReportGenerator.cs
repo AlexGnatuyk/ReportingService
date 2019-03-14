@@ -30,8 +30,8 @@ namespace ReportingService
             {
                 try
                 {
-                    var periodsSummary = GetPeriodsSummary(requestTime);
-                    WriteToCsv(requestTime, periodsSummary);
+                    var powerPeriods = GetPowerPeriodsSummary(requestTime);
+                    WriteToCsv(requestTime, powerPeriods);
                     requestSuccess = true;
                 }
                 catch (Exception e)
@@ -41,19 +41,19 @@ namespace ReportingService
             }
         }
 
-        private IEnumerable<PeriodSummary> GetPeriodsSummary(DateTime requestTime)
+        private IEnumerable<PowerPeriodSummary> GetPowerPeriodsSummary(DateTime requestTime)
         {
             var trades = new TradingService().GetTrades(requestTime);
 
            return trades.Select(x => x.Periods).SelectMany(x => x).GroupBy(x => x.Period).Select(y =>
-                new PeriodSummary
+                new PowerPeriodSummary
                 {
                     LocalTime = TimeSpan.FromHours((y.Key + 5) % 24).ToString("hh':'mm"),
                     Volume = y.Sum(v => v.Volume)
                 });
         }
 
-        private void WriteToCsv(DateTime requestTime, IEnumerable<PeriodSummary> periodsSummary)
+        private void WriteToCsv(DateTime requestTime, IEnumerable<PowerPeriodSummary> periodsSummary)
         {
             using (var writer = new StreamWriter(Path.Combine(_path + "\\PowerPosition_" + requestTime.ToString("yyyyMMdd_HHmmss") + ".csv")))
             {
