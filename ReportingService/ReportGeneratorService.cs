@@ -33,7 +33,7 @@ namespace ReportingService
             {
                 _path = config.Directory.Path;
                 _interval = config.Interval.Interval;
-                _logger.Info($"[ReportGeneratorService] From config file was readed path = '{_path}' interval='{_interval}'");
+                _logger.Info($"[ReportGeneratorService] Path = '{_path}'  interval='{_interval}' was readed from config file");
                 _reportGenerator = new ReportGenerator(_path, _logger);
                 _timer = new Timer(WorkProcedure);
                 WorkProcedure(5);
