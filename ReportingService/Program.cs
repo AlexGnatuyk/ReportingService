@@ -17,8 +17,8 @@ namespace ReportingService
 
             if (Environment.UserInteractive)
             {
-                ReportGeneratorService service1 = new ReportGeneratorService();
-                service1.TestStartupAndStop(args);
+                ReportGeneratorService reportGeneratorService = new ReportGeneratorService();
+                reportGeneratorService.TestStartupAndStop(args);
             }
             else
             {
