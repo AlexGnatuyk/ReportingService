@@ -20,9 +20,10 @@ namespace ReportingService
 
         public void WriteToCsv(DateTime requestTime, IEnumerable<PowerPeriodSummary> periodsSummary)
         {
-            using (var writer =
-                new StreamWriter(Path.Combine(_path + "\\PowerPosition_" + requestTime.ToString("yyyyMMdd_HHmm") +
-                                              ".csv")))
+            string fileName = Path.Combine(_path + "\\PowerPosition_" + requestTime.ToString("yyyyMMdd_HHmm"));
+            fileName = File.Exists(fileName) ? Path.Combine(fileName +"(1).csv") : Path.Combine(fileName + ".csv");
+
+            using (var writer = new StreamWriter(fileName))
             {
                 LogEvent?.Invoke($"[ReportGenerator] File PowerPosition_{requestTime:yyyyMMdd_HHmm}.csv was created successfully");
                 using (var csv = new CsvWriter(writer))
