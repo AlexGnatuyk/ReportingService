@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace ReportingService.Models
 {
@@ -22,6 +23,14 @@ namespace ReportingService.Models
 
             return this.LocalTime == other.LocalTime
                    && this.Volume == other.Volume;
+        }
+
+        public override int GetHashCode()
+        {
+            var hashCode = -706147816;
+            hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(LocalTime);
+            hashCode = hashCode * -1521134295 + Volume.GetHashCode();
+            return hashCode;
         }
     }
 }

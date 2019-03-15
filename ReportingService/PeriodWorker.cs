@@ -28,7 +28,7 @@ namespace ReportingService
 
         private int ModifyPeriod(int period)
         {
-            return (period + TimeShift) % 24;
+            return period + TimeShift;
         }
     }
 }

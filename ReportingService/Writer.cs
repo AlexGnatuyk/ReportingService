@@ -28,7 +28,7 @@ namespace ReportingService
                 using (var csv = new CsvWriter(writer))
                 {
                     csv.WriteRecords(periodsSummary);
-                    LogEvent?.Invoke($"[ReportGenerator] Data in file PowerPosition_{requestTime:yyyyMMdd_HHmm}.csv was wrote successfully");
+                    LogEvent?.Invoke($"[ReportGenerator] Data in file PowerPosition_{requestTime:yyyyMMdd_HHmm}.csv was written successfully");
                 }
             }
         }
