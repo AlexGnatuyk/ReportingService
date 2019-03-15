@@ -68,6 +68,7 @@
     <Compile Include="Configuration\DirectoryElement.cs" />
     <Compile Include="Configuration\IntervalElement.cs" />
     <Compile Include="Configuration\ReportGeneratorSection.cs" />
+    <Compile Include="PeriodWorker.cs" />
     <Compile Include="ReportGenerator.cs" />
     <Compile Include="ReportGeneratorService.cs">
       <SubType>Component</SubType>

@@ -11,6 +11,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using NLog;
+using ReportingService.Adapter;
 using ReportingService.Configuration;
 
 namespace ReportingService
@@ -34,7 +35,7 @@ namespace ReportingService
                 _path = config.Directory.Path;
                 _interval = config.Interval.Interval;
                 _logger.Info($"[ReportGeneratorService] Path = '{_path}'  interval='{_interval}' was read from config file");
-                _reportGenerator = new ReportGenerator(new Writer(_path), new TradeWorker(), _logger);
+                _reportGenerator = new ReportGenerator(new Writer(_path), new TradeWorker(new TradeAdapter(), new PeriodWorker()), _logger);
                 _logger.Info($"[ReportGeneratorService] ReportGenerator was created with path = '{_path}'");
                 _timer = new Timer(WorkProcedure);
                 InitializeComponent();
