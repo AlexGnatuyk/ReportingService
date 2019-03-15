@@ -50,7 +50,7 @@ namespace ReportingService
         protected override void OnStart(string[] args)
         {
             var startTime = 0;
-           _timer.Change(startTime, _interval * 1000);
+           _timer.Change(startTime, _interval * 60000);
         }
 
         private void WorkProcedure(object target)
