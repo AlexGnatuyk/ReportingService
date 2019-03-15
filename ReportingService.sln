@@ -9,7 +9,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReportingService.Abstractio
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReportingService.Adapter", "ReportingService.Adapter\ReportingService.Adapter.csproj", "{F5A9ACE6-968A-4D87-9730-9981212997FF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests", "Tests\Tests.csproj", "{C5165CDE-D53F-45A8-95F5-6882CA3FA8B0}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReportingService.Tests", "Tests\ReportingService.Tests.csproj", "{C5165CDE-D53F-45A8-95F5-6882CA3FA8B0}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReportingService.Models", "ReportingService.Models\ReportingService.Models.csproj", "{184C9D0A-A3F9-45DE-B076-A396D3D24195}"
 EndProject
