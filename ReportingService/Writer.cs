@@ -21,14 +21,14 @@ namespace ReportingService
         public void WriteToCsv(DateTime requestTime, IEnumerable<PowerPeriodSummary> periodsSummary)
         {
             using (var writer =
-                new StreamWriter(Path.Combine(_path + "\\PowerPosition_" + requestTime.ToString("yyyyMMdd_HHmmss") +
+                new StreamWriter(Path.Combine(_path + "\\PowerPosition_" + requestTime.ToString("yyyyMMdd_HHmm") +
                                               ".csv")))
             {
-                LogEvent?.Invoke($"[ReportGenerator] File PowerPosition_{requestTime:yyyyMMdd_HHmmss}.csv was created successfully");
+                LogEvent?.Invoke($"[ReportGenerator] File PowerPosition_{requestTime:yyyyMMdd_HHmm}.csv was created successfully");
                 using (var csv = new CsvWriter(writer))
                 {
                     csv.WriteRecords(periodsSummary);
-                    LogEvent?.Invoke($"[ReportGenerator] Data in file PowerPosition_{requestTime:yyyyMMdd_HHmmss} .csv was wrote successfully");
+                    LogEvent?.Invoke($"[ReportGenerator] Data in file PowerPosition_{requestTime:yyyyMMdd_HHmm}.csv was wrote successfully");
                 }
             }
         }
