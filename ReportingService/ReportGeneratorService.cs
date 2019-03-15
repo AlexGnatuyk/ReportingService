@@ -34,7 +34,8 @@ namespace ReportingService
                 _path = config.Directory.Path;
                 _interval = config.Interval.Interval;
                 _logger.Info($"[ReportGeneratorService] Path = '{_path}'  interval='{_interval}' was read from config file");
-                _reportGenerator = new ReportGenerator(_path, _logger);
+                _reportGenerator = new ReportGenerator(new Writer(_path), new TradeWorker(), _logger);
+                _logger.Info($"[ReportGeneratorService] ReportGenerator was created with path = '{_path}'");
                 _timer = new Timer(WorkProcedure);
                 InitializeComponent();
             }
@@ -48,7 +49,7 @@ namespace ReportingService
         protected override void OnStart(string[] args)
         {
             var startTime = 0;
-           _timer.Change(startTime, _interval * 60000);
+           _timer.Change(startTime, _interval * 1000);
         }
 
         private void WorkProcedure(object target)

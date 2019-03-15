@@ -68,7 +68,6 @@
     <Compile Include="Configuration\DirectoryElement.cs" />
     <Compile Include="Configuration\IntervalElement.cs" />
     <Compile Include="Configuration\ReportGeneratorSection.cs" />
-    <Compile Include="PowerPeriodSummary.cs" />
     <Compile Include="ReportGenerator.cs" />
     <Compile Include="ReportGeneratorService.cs">
       <SubType>Component</SubType>
@@ -84,6 +83,8 @@
     <Compile Include="ReportGeneratorServiceInstaller.Designer.cs">
       <DependentUpon>ReportGeneratorServiceInstaller.cs</DependentUpon>
     </Compile>
+    <Compile Include="TradeWorker.cs" />
+    <Compile Include="Writer.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -91,6 +92,20 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ReportingService.Abstractions\ReportingService.Abstractions.csproj">
+      <Project>{78382c15-96ee-4617-9bc5-ca64949e986d}</Project>
+      <Name>ReportingService.Abstractions</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ReportingService.Adapter\ReportingService.Adapter.csproj">
+      <Project>{f5a9ace6-968a-4d87-9730-9981212997ff}</Project>
+      <Name>ReportingService.Adapter</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ReportingService.Models\ReportingService.Models.csproj">
+      <Project>{184C9D0A-A3F9-45DE-B076-A396D3D24195}</Project>
+      <Name>ReportingService.Models</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
